@@ -1,0 +1,132 @@
+@charset 'utf-8';
+
+
+//==================================================
+//  ヘッダー アニメーション設定
+//  初期値は、<header id="header" class="scroll-up">
+//==================================================
+
+
+body{
+  padding-top:$mobile-total-navi-height;
+}
+
+body{
+
+  &.scroll-down{
+
+    //ローカルナビの高さ分 + ちょい余白を確保
+    // padding-top: $mobile-local-navi-height;
+    padding-top: 57px !important;
+
+    #global-navi{
+      position: fixed;
+      z-index: 800;
+      width: 100%;
+      top:-($mobile-global-navi-height);
+      left:0;
+      transition: all .3s;
+    }
+    #local-navi{
+      position: fixed;
+      z-index: 700;
+      width: 100%;
+      top:0;
+      left:0;
+      transition: all .5s;
+    }
+
+  }
+
+  &.scroll-up{
+
+    #global-navi{
+      position: fixed;
+      z-index: 800;
+      width: 100%;
+      top:0px;
+      left:0;
+      transition: all .3s;
+    }
+
+    #local-navi{
+      position: fixed;
+      z-index: 700;
+      width: 100%;
+      top: $mobile-global-navi-height;
+      left:0;
+      transition: all .5s;
+    }
+  }
+}
+
+
+
+//==================================================//
+//==================================================//
+
+
+
+/* width 1200〜 */
+@media (min-width: $breakpoint-lg) {
+
+
+body{
+  padding-top: $desktop-total-navi-height;
+}
+
+
+body{
+
+  &.scroll-down{
+
+    //ローカルナビの高さ分 + ちょい余白を確保
+    // padding-top: $desktop-local-navi-height;
+    padding-top: 80px !important;
+
+    #global-navi{
+      position: fixed;
+      z-index: 800;
+      width: 100%;
+      top:-($desktop-global-navi-height);
+      left:0;
+      transition: all .3s;
+    }
+    #local-navi{
+      position: fixed;
+      z-index: 700;
+      width: 100%;
+      top:0;
+      left:0;
+      transition: all .5s;
+    }
+
+  }
+
+  &.scroll-up{
+
+    #global-navi{
+      position: fixed;
+      z-index: 800;
+      width: 100%;
+      top:0px;
+      left:0;
+      transition: all .3s;
+    }
+
+    #local-navi{
+      position: fixed;
+      z-index: 700;
+      width: 100%;
+      top: $desktop-global-navi-height;
+      left:0;
+      transition: all .5s;
+    }
+  }
+}
+
+}
+
+
+//==================================================//
+//==================================================//

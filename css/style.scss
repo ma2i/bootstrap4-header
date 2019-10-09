@@ -1,0 +1,128 @@
+@charset 'utf-8';
+
+
+
+
+//======================================================================
+//  Google Fonts
+//======================================================================
+
+/* Noto Sans JP
+font-family: 'Noto Sans JP', sans-serif; */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700,900&display=swap&subset=japanese');
+
+
+/* Noto Serif JP
+font-family: 'Noto Serif JP', serif; */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP:200,300,400,500,600,700,900&display=swap&subset=japanese');
+
+
+/* Raleway
+font-family: 'Raleway', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+/* Oswald
+font-family: 'Oswald', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap');
+
+
+/* Roboto Condensed
+font-family: 'Roboto Condensed', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap');
+
+
+
+
+//======================================================================
+//  Base
+//======================================================================
+
+$english : 'Raleway', sans-serif;
+
+
+body{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+
+*:focus{
+  outline: none !important;
+}
+
+
+#global-navi,
+#local-navi{
+
+    // opacity: 0.4 !important;
+}
+
+//======================================================================
+//  Break Point（Bootstrap4のデフォルト値を変数に設定）
+//======================================================================
+
+$breakpoint-sm : 576px;
+$breakpoint-md : 768px;
+$breakpoint-lg : 992px;
+$breakpoint-xl : 1400px;
+
+
+
+
+//======================================================================
+//  グローバルナビ と ローカルナビ の高さ
+//======================================================================
+
+/* 画面スクロールに応じて、ナビゲーション表示を可変させるために必要（JS取得でもOK） */
+$mobile-global-navi-height :  50px;
+$mobile-local-navi-height  :  47px;
+$mobile-total-navi-height  :  97px;
+
+$desktop-global-navi-height: 110px;
+$desktop-local-navi-height :  70px;
+$desktop-total-navi-height : 180px;
+
+
+
+
+//======================================================================
+//  その他
+//======================================================================
+
+/* モバイルのみ表示 */
+@media (min-width: $breakpoint-lg){
+  .mobile-only{
+    display: none !important;
+  }
+}
+
+/* デスクトップのみ表示 */
+.desktop-only{
+  display: none !important;
+}
+@media (min-width: $breakpoint-lg){
+  .desktop-only{
+    display: inline-block !important;
+  }
+}
+
+
+
+
+//======================================================================
+//  読み込み
+//======================================================================
+
+@import './common-navi-style.scss';
+@import './global-navi.scss';
+@import './local-navi.scss';
+@import './header.scss';
+
+
+
+
+//======================================================================
+//  END
+//======================================================================

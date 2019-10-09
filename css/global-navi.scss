@@ -1,0 +1,397 @@
+@charset 'utf-8';
+
+
+//==================================================
+//  グローバルナビ のレイアウト
+//==================================================
+
+
+#global-navi.common-navi-style{
+  background: #fff;
+
+
+  //==================================================
+  //  コンテンツ枠
+  //==================================================
+
+  .container-fluid{
+    width: 100%;
+    padding: 0 0 0 0;
+  }
+
+
+  //==================================================
+  //  グローバルナビのスタイル
+  //==================================================
+
+  .navbar{
+    min-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    //ハンバーガーボタン
+    button.btn-hamburger{
+    }
+
+    //ロゴ
+    .logo-wrap{
+      width: 90px;
+      height: 30px;
+      position: absolute;
+      margin: 0 auto;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      a.logo{
+        width     : 100%;
+        height    : 100%;
+        display   : block;
+        background: url(/img/logo.svg) no-repeat left center;
+        background-size: 90px auto;
+      }
+    }
+
+    //ログイン
+    .btns{
+      //モバイルオンリー
+      .navbar-nav.mobile-only{
+        background: #dd2828;
+        border-radius: 100px;
+        padding: 4px 15px 5px;
+        font-size: 0.8rem;
+        a{
+          color: #fff;
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+    }
+
+    //ナビリンク
+    .navbar-collapse{
+      position: absolute;
+      left: 0;
+      top:$mobile-total-navi-height;
+      z-index: 800;
+      width: 100%;
+      background: #fff;
+    }
+  }
+
+
+
+  //==================================================
+  //  ハンバーガーボタンのスタイルと動き
+  //==================================================
+
+  button.btn-hamburger{
+
+    margin   : 0 0 0 0;
+    padding  : 0 0 0 0;
+    width    : 20px;
+    height   : 14px;
+    border   : none;
+    position : relative;
+    border-radius    : 100px;
+    background-color : transparent;
+
+
+    /* ================================= ボタン自体の回転処理 Start */
+
+    //ドロップダウン（OPEN）
+    transition : all .4s;
+    transform  : rotate(0deg);
+
+    //ドロップダウン（CLOSE）
+    &.collapsed{
+      transition : all .4s;
+      transform  : rotate(-360deg);
+    }
+
+    /* ================================= ボタン自体の回転処理 END */
+
+
+    //ドロップダウン（OPEN時）
+    .icon-bar{
+      padding    : 0 0 0 0;
+      margin     : 0 0 0 0;
+      width      : 100%;
+      height     : 2px;
+      background : #000;
+      position   : absolute;
+
+      &:nth-of-type(1){
+        display : block;
+        width   : 100%;
+        top     : 0px;
+        left    : 0px;
+        transform : translateY(6px) rotate(-45deg); //45°回転
+      }
+      &:nth-of-type(2){
+        display : block;
+        width   : 100%;
+        top     : 50%;
+        left    : 0px;
+        margin-top: -1px !important;/* height:2px のため */
+        opacity : 0; //透明
+      }
+      &:nth-of-type(3){
+        display : block;
+        width   : 100%;
+        bottom  : 0px;
+        left    : 0px;
+        transform : translateY(-6px) rotate(45deg); //45°回転
+      }
+    }
+
+    //ドロップダウン（Close時）
+    &.collapsed{
+      .icon-bar{
+        transform : none;
+        opacity   : 1;
+      }
+    }
+
+  }
+
+
+
+}
+
+
+
+/* =========================================================================== */
+/* =========================================================================== */
+
+
+
+/* width 992〜 */
+@media (min-width: $breakpoint-lg) {
+#global-navi.common-navi-style{
+
+
+
+  //==================================================
+  //  コンテンツ枠（ $breakpoint-lg ）
+  //==================================================
+
+  .container-fluid{
+    width: 100%;
+    padding-left : 30px;
+    padding-right: 30px;
+  }
+
+
+  //==================================================
+  //  グローバルナビ（ $breakpoint-lg ）
+  //==================================================
+
+  .navbar{
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 110px;
+
+    //ロゴ
+    .logo-wrap{
+      position: relative;
+      top:0;
+      left: 0;
+      transform: none;
+      margin-right: 0px;/*　❗️ */
+      width: 100px;
+      height: 30px;
+      a.logo{
+        width: 100px;
+        height: 30px;
+        display: block;
+        background: url(/img/logo.svg) no-repeat left top;
+        background-size: 100%;
+      }
+    }
+
+
+    //ナビリンク
+    .navbar-collapse{
+      position: relative;
+      left: 0;
+      top:0;
+      width: auto;
+      background:none;
+
+      ul.navbar-nav{
+        li{
+          display: flex;
+          position: relative;
+          padding-left: 5px;
+          padding-right: 5px;
+          a{
+            font-size: 1rem;
+            color: #111;
+            font-weight: 500;
+          }
+          &:before{
+            content: "/";
+            color: #d3d3d3;
+            color: #e3e3e3;
+            font-size  : 11px;
+            font-family:'Noto Sans JP', sans-serif;
+            font-weight: 700;
+            position: absolute;
+            top:50%;
+            left:-4px;
+            display: block;
+            transform: translateY(-50%);
+          }
+          &:nth-of-type(1)::before{
+            content: none;
+          }
+        }
+
+      }
+    }
+
+    //スタートメニュー
+    .btns{
+      ul#start-menu{
+        li.dropdown{
+          position: relative;
+
+          &:hover{
+            .dropdown-menu{
+              pointer-events : auto !important; /////////////❗️❗️❗️❗️❗️
+              opacity    : 1;
+              display    : block;
+              position   : absolute;
+              transition : .2s ease-in-out;
+              transform  : translateX(-50%) translateY(-10px) scale(1);
+              z-index: 999;
+            }
+          }
+          //スタートメニューボタン
+          a.dropdown-toggle{
+            border-radius   : 100px 100px 100px 100px;
+            background      : #3173e4;
+            background      : #dd2828;
+            color           : #fff;
+            font-weight     : bold;
+            font-size       : 0.95rem;
+            padding         : 14px 19px 14px 46px;
+            text-align      : center;
+            background      : url(/img/icon-power.svg) #dd2828 no-repeat 18px center;
+            background-size : 20px 21px;
+            border-bottom   : 1px solid darken(#dd2828,40%);
+            &::after{
+              content: none;
+            }
+          }
+          .dropdown-menu{
+            pointer-events : none !important; /////////////❗️❗️❗️❗️❗️
+            opacity        : 0;
+            display        : block;
+            position       : absolute;
+            top            : 0px;
+            left           : 50%;
+            transform      : translateX(-50%) translateY(-20px) scale(1.1);
+            transition     : all .5s;
+            width          : 220px;
+            border-radius  : 5px 5px 5px 5px;
+            padding-right  : 1px;
+            padding-bottom : 12px;
+            a{
+              font-size: 0.9rem;
+              &.dropdown-item{
+                padding: .25rem 1.5rem;/* デフォルト */
+                padding: .25rem 2rem;
+              }
+              &::before{
+                position: relative;
+                top:0;
+                left:-10px;
+                background: #f1f1f1;
+                display: inline-block;
+                width : 30px;
+                height: 30px;
+                padding: 5px 5px 5px 5px ;
+                border-radius: 100px;
+                text-align: center;
+              }
+              &.login{
+                &::before{
+                  content: "\f2f6";
+                  font-weight: 900;
+                  font-family: 'FontAwesome';
+                }
+              }
+              &.sign-up{
+                &::before{
+                  content: "\f007";
+                  font-weight: 900;
+                  font-family: 'FontAwesome';
+                }
+              }
+              &.download{
+                &::before{
+                  content: "\f019";
+                  font-weight: 900;
+                  font-family: 'FontAwesome';
+                }
+              }
+              &.guide{
+                &::before{
+                  content: "\f0eb";
+                  font-weight: 900;
+                  font-family: 'FontAwesome';
+                }
+              }
+            }
+          }
+        }
+
+        li.dropdown.show{
+          a.dropdown-toggle{
+            border-radius: 5px 5px 0 0;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+
+}
+}
+
+
+
+/* =========================================================================== */
+/* =========================================================================== */
+
+
+/* width 1200〜 */
+@media (min-width: $breakpoint-xl) {
+#global-navi.common-navi-style{
+
+  .container-fluid{
+    width         : $breakpoint-xl;
+    min-width     : $breakpoint-xl;
+    padding-left  : 0px;
+    padding-right : 0px;
+  }
+
+
+
+}
+}
+
+
+
+/* =========================================================================== END */

@@ -1,0 +1,164 @@
+@charset 'utf-8';
+
+
+//======================================================
+//  ナビリンク（グローバルナビ  と ローカルナビ の共通スタイル）
+//======================================================
+
+
+.common-navi-style{
+
+  ul{
+    list-style: none;
+  }
+
+  .navbar{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+
+  .navbar-collapse{
+    margin: 0 0 0 0;
+    padding: 0px 20px 0px 20px;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0px  3px 3px 0px rgba(#000,0.2); //box-shadow: 左右の向きpx  上下の向きpx ぼかしpx 広がりpx 色 内側指定;
+
+    ul{
+      padding: 20px 0 20px 0;
+      li{
+        &.nav-item{
+          border-bottom: 1px solid #eee;
+        }
+        a{
+          &.nav-link{
+            padding: .9rem 1.0rem;
+          }
+          font-size: .9rem;
+        }
+        &:nth-of-type(1){
+          border-top: 1px solid #eee;
+        }
+      }
+
+      li.dropdown{
+        a.dropdown-toggle{
+          &::after{
+            transition: all .4s;
+            display: inline-block;
+            border: none; //bootstrapのデフォルト削除
+            margin : 0 0 0 0;
+            padding: 0 0 0 0;
+            content: "\f0d7";
+            font-family: FontAwesome;
+            font-size: 16px;
+            position: absolute;
+            top:15px;
+            right:20px;
+          }
+        }
+
+        &.show{
+          a.dropdown-toggle{
+            &::after{
+              transition: all .4s;
+              transform :  rotate(-540deg); //45°回転
+              position: absolute;
+              top:15px;
+              right:20px;
+            }
+          }
+
+          .dropdown-menu{
+            position: relative;
+            top:-10px;
+            border: none;
+            a.dropdown-item{
+              padding: .5rem 2.2rem;
+              position: relative;
+              &::before{
+                content: "・";
+                color: #ddd;
+                font-size: 1.6rem;
+                position: absolute;
+                top:50%;
+                transform: translateY(-51%);
+                left:0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+
+
+/* =========================================================================== */
+/* =========================================================================== */
+
+
+/* width 992〜 */
+@media (min-width: $breakpoint-lg) {
+.common-navi-style{
+
+
+  .navbar-collapse{
+    box-shadow: none;
+
+    ul{
+      padding:  0 0 0 0 ;
+      li{
+        &.nav-item{
+          border-bottom : none; //モバイル時の区切り線を削除
+        }
+        &:nth-of-type(1){
+          border-top: none;
+        }
+      }
+
+      //ドロップメニューリンク
+      li.dropdown{
+        //ドロップメニューリンクのボタン
+        a.dropdown-toggle{
+          &::after{
+            content : none; //アイコン削除
+          }
+        }
+        //ドロップメニューの「OPEN」時
+        &.show{
+          .dropdown-menu{
+            position : absolute;
+            top      : 48px;
+            border   : none;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+}
+
+
+
+/* =========================================================================== */
+/* =========================================================================== */
+
+
+/* width 1200〜 */
+@media (min-width: $breakpoint-xl) {
+.common-navi-style{
+
+
+
+
+
+}
+}
+
+
+/* =========================================================================== END */

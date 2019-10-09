@@ -1,0 +1,237 @@
+@charset 'utf-8';
+
+
+//======================================================
+//  ローカルナビ （共通スタイルの上書き・追加）
+//======================================================
+
+
+#local-navi.common-navi-style{
+
+  background: #011526;
+
+  //==================================================
+  //  コンテンツ枠
+  //==================================================
+
+  .container-fluid{
+    width: 100%;
+    padding-left : 0px;
+    padding-right: 0px;
+  }
+
+
+  //==================================================
+  //  ローカルナビのスタイル
+  //==================================================
+
+  .navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #000;
+    padding: 0 0 0 0;
+
+
+    //カテゴリーネーム
+    .navbar-toggler{
+      text-align: center;
+      display: block;
+      width: 100%;
+      border: none;
+      padding: 15px 0 15px 0;
+      line-height: 1rem;
+
+      //カテゴリーネーム（ドロップダウン用のリンクとして機能）
+      span{
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+        line-height: 1rem;
+        position: relative;
+      }
+      span::after{
+        content: "\f106"; /* angle-up */
+        font-family: FontAwesome;
+        font-size: 1.0rem;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0.5rem;
+        position: absolute;
+        top:6px;
+        right: -20;
+        transition: all .4s;
+        transform :  rotate(540deg); //45°回転
+      }
+
+      &.collapsed{
+
+        span::after{
+          top:5px;
+          right: -20;
+          transition: all .4s;
+          transform :  rotate(0deg);
+        }
+      }
+    }
+
+    //ローカルナビリンク
+    .navbar-collapse{
+      background: #fff;
+      //ローカルナビの【左】半分のメニュー
+      ul.navbar-nav{
+      }
+      //ローカルナビの【右】半分のメニュー（電話番号）
+      ul.navbar-nav.right{
+        padding-top: 0 !important;
+        li{
+          border: none !important;
+          &.tel{
+            a{
+              display: inline-block;
+              font-size: 1rem;
+              font-weight: 600;
+              &::before{
+                content: "\f2a0";
+                font-family: FontAwesome;
+                font-weight: 900;
+                font-size: 1.0rem;
+                line-height: 1;
+                padding: 7px;
+                margin : 0 6px 0 0;
+                background:#ccc;
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border-radius: 100px;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+/* =========================================================================== */
+/* =========================================================================== */
+
+
+
+/* width 992〜 */
+@media (min-width: $breakpoint-lg) {
+#local-navi.common-navi-style{
+
+
+  //==================================================
+  //  コンテンツ枠
+  //==================================================
+
+  .container-fluid{
+    width         : 100%;
+    padding-left  : 0px !important;
+    padding-right : 0px !important;
+  }
+
+
+  //==================================================
+  //  ローカルナビ
+  //==================================================
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: none;
+    min-height: 70px;
+    padding-left: 20px !important;
+    padding-right: 0px !important;
+  }
+
+  //カテゴリーネーム
+  .navbar-toggler{
+    width: auto !important;
+    pointer-events: none;
+    flex-grow: 0;
+    span::after{
+      content: "｜" !important;
+      opacity: 0.5;
+    }
+  }
+
+  //ローカルナビリンク
+  .navbar-collapse{
+
+    flex-grow: 1;
+    background: none !important;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0px 0px 20px !important;/* カテゴリ名とローカルナビの間の区切り線とのマージンを確保 */
+
+    //ローカルナビの【左】半分のメニュー
+    ul.navbar-nav{
+      li{
+        a{
+          color: #fff;
+          &:hover{
+            color: rgba(#fff,0.5);
+          }
+        }
+      }
+      //ドロップメニューリンク
+      li.dropdown{
+        //ドロップメニューの「OPEN」時
+        &.show{
+          .dropdown-menu{
+            position : absolute;
+            top      : 45px;
+          }
+        }
+      }
+    }
+    //ローカルナビの【右】半分のメニュー（電話番号）
+    ul.navbar-nav.right{
+    }
+
+
+  }
+
+
+}
+}
+
+
+// /* =========================================================================== */
+// /* =========================================================================== */
+
+/* width 1200〜 */
+@media (min-width: $breakpoint-xl) {
+#local-navi.common-navi-style{
+
+  .container-fluid{
+    width         : $breakpoint-xl;
+    min-width     : $breakpoint-xl;
+    padding-left  : 20px;
+    padding-right : 20px;
+  }
+
+  .navbar{
+    display: flex;
+    justify-content: flex-start;
+    background: none;
+  }
+
+  a.navbar-toggler{
+  }
+
+
+}
+}
+
+
+// /* =========================================================================== END */
